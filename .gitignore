@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+captures/
+*.png
+demo_calibration.json
+*_result.json
