@@ -1,0 +1,16 @@
+{
+  "camera": 1,
+  "backend": "msmf",
+  "width": 3840,
+  "height": 3032,
+  "roi": [
+    1260,
+    1180,
+    1160,
+    500
+  ],
+  "exposure": -4,
+  "gain": 32,
+  "focus": "manual fixed",
+  "created_utc": "2026-11-16T01:11:53.772364+00:00"
+}

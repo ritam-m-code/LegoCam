@@ -1,0 +1,46 @@
+{
+  "source": "sessions/final_rig",
+  "note": "Original records and raw images remain unchanged. Reuse does not establish validity; new held-out checks are required.",
+  "records": [
+    {
+      "label": "B100_centre_1",
+      "role": "calibration",
+      "reason": "Long axis spans image centre; retains location-dependent effects for independent checking"
+    },
+    {
+      "label": "B080_centre_1",
+      "role": "calibration",
+      "reason": "Long axis spans image centre; retains location-dependent effects for independent checking"
+    },
+    {
+      "label": "B060_centre_1",
+      "role": "calibration",
+      "reason": "Long axis spans image centre; retains location-dependent effects for independent checking"
+    },
+    {
+      "label": "B040_centre_1",
+      "role": "diagnostic",
+      "reason": "Long-axis placement or orientation comparison; excluded from fitting"
+    },
+    {
+      "label": "B040_vertical_1",
+      "role": "calibration",
+      "reason": "Long axis spans image centre; retains location-dependent effects for independent checking"
+    },
+    {
+      "label": "B020_centre_1",
+      "role": "diagnostic",
+      "reason": "Long-axis placement or orientation comparison; excluded from fitting"
+    },
+    {
+      "label": "B020_vertical_1",
+      "role": "diagnostic",
+      "reason": "Long-axis placement or orientation comparison; excluded from fitting"
+    },
+    {
+      "label": "B020_cross_vertical_1",
+      "role": "calibration",
+      "reason": "Long axis spans image centre; retains location-dependent effects for independent checking"
+    }
+  ]
+}

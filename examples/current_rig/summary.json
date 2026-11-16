@@ -1,0 +1,322 @@
+{
+  "calibration": {
+    "schema": 1,
+    "setup_hash": "cc9490b60741b7ee096c437e7429f1e78a9da01ad6b4e8c48cb49a6b310aaff1",
+    "scales_mm_per_px": [
+      0.09724325406578584,
+      0.09779499002238305
+    ],
+    "radial_k": 1.054,
+    "radial_normalization": "image max dimension; centre fixed at image centre",
+    "fit_record_ids": [
+      "20261116T011159546709_B100_centre_1",
+      "20261116T011450535539_B080_centre_1",
+      "20261116T011915354365_B060_centre_1",
+      "20261116T012427389089_B040_vertical_1",
+      "20261116T013635615030_B020_cross_vertical_1"
+    ],
+    "fit_errors_mm": [
+      [
+        -0.13654602835072183,
+        -0.27818593940674674
+      ],
+      [
+        -0.16629521036368544,
+        0.08820581099377556
+      ],
+      [
+        0.20376273263479305,
+        0.07924088369082227
+      ],
+      [
+        0.11522132079574732,
+        -0.4200166312077922
+      ],
+      [
+        -0.058897520654372926,
+        -0.014093251299927445
+      ]
+    ],
+    "axis_reference_ranges_mm": [
+      [
+        59.68,
+        99.58
+      ],
+      [
+        19.91,
+        39.74
+      ]
+    ],
+    "reference_height_range_mm": [
+      9.57,
+      9.63
+    ],
+    "status": "PROVISIONAL until held-out validation and uncertainty budget are complete",
+    "model": "Diagonal metric with one radial correction fitted to long reference dimensions; no height compensation"
+  },
+  "records": [
+    {
+      "id": "20261116T011159546709_B100_centre_1",
+      "label": "B100_centre_1",
+      "role": "calibration",
+      "block": "B100",
+      "placement": "centre-horizontal",
+      "frames": 5,
+      "warnings": "reference short-side comparison assumes recorded width face is visible; width outside axis reference span",
+      "length_mm": 99.44345397164928,
+      "length_frame_sd_mm": 0.00790970363453097,
+      "length_error_mm": -0.13654602835072183,
+      "width_mm": 9.681814060593254,
+      "width_frame_sd_mm": 0.014823079587069042,
+      "width_error_mm": -0.27818593940674674,
+      "caliper_length_mm": null,
+      "caliper_length_error_mm": null,
+      "caliper_width_mm": null,
+      "caliper_width_error_mm": null
+    },
+    {
+      "id": "20261116T011450535539_B080_centre_1",
+      "label": "B080_centre_1",
+      "role": "calibration",
+      "block": "B080",
+      "placement": "centre-horizontal",
+      "frames": 5,
+      "warnings": "reference short-side comparison assumes recorded width face is visible; width outside axis reference span",
+      "length_mm": 79.55370478963631,
+      "length_frame_sd_mm": 0.011579066687253576,
+      "length_error_mm": -0.16629521036368544,
+      "width_mm": 10.068205810993776,
+      "width_frame_sd_mm": 0.0169750235398175,
+      "width_error_mm": 0.08820581099377556,
+      "caliper_length_mm": null,
+      "caliper_length_error_mm": null,
+      "caliper_width_mm": null,
+      "caliper_width_error_mm": null
+    },
+    {
+      "id": "20261116T011915354365_B060_centre_1",
+      "label": "B060_centre_1",
+      "role": "calibration",
+      "block": "B060",
+      "placement": "centre-horizontal",
+      "frames": 5,
+      "warnings": "reference short-side comparison assumes recorded width face is visible; width outside axis reference span",
+      "length_mm": 59.88376273263479,
+      "length_frame_sd_mm": 0.003742731050032618,
+      "length_error_mm": 0.20376273263479305,
+      "width_mm": 9.989240883690822,
+      "width_frame_sd_mm": 0.0031524618692580155,
+      "width_error_mm": 0.07924088369082227,
+      "caliper_length_mm": null,
+      "caliper_length_error_mm": null,
+      "caliper_width_mm": null,
+      "caliper_width_error_mm": null
+    },
+    {
+      "id": "20261116T012209336936_B040_centre_1",
+      "label": "B040_centre_1",
+      "role": "diagnostic",
+      "block": "B040",
+      "placement": "centre-horizontal",
+      "frames": 5,
+      "warnings": "reference short-side comparison assumes recorded width face is visible; length outside axis reference span; width outside axis reference span",
+      "length_mm": 39.79741072063983,
+      "length_frame_sd_mm": 0.04351928701552488,
+      "length_error_mm": 0.05741072063982955,
+      "width_mm": 9.636628411804688,
+      "width_frame_sd_mm": 6.603150009932911e-05,
+      "width_error_mm": -0.3033715881953114,
+      "caliper_length_mm": null,
+      "caliper_length_error_mm": null,
+      "caliper_width_mm": null,
+      "caliper_width_error_mm": null
+    },
+    {
+      "id": "20261116T012427389089_B040_vertical_1",
+      "label": "B040_vertical_1",
+      "role": "calibration",
+      "block": "B040",
+      "placement": "centre-vertical",
+      "frames": 5,
+      "warnings": "reference short-side comparison assumes recorded width face is visible; width outside axis reference span",
+      "length_mm": 39.85522132079575,
+      "length_frame_sd_mm": 0.11468721913928356,
+      "length_error_mm": 0.11522132079574732,
+      "width_mm": 9.519983368792207,
+      "width_frame_sd_mm": 0.12282142342427349,
+      "width_error_mm": -0.4200166312077922,
+      "caliper_length_mm": null,
+      "caliper_length_error_mm": null,
+      "caliper_width_mm": null,
+      "caliper_width_error_mm": null
+    },
+    {
+      "id": "20261116T012744688737_B020_centre_1",
+      "label": "B020_centre_1",
+      "role": "diagnostic",
+      "block": "B020",
+      "placement": "centre-horizontal",
+      "frames": 5,
+      "warnings": "reference short-side comparison assumes recorded width face is visible; length outside axis reference span; width outside axis reference span",
+      "length_mm": 20.910086234233912,
+      "length_frame_sd_mm": 0.007150753987087878,
+      "length_error_mm": 1.0000862342339119,
+      "width_mm": 10.14421710875837,
+      "width_frame_sd_mm": 0.040807486001769006,
+      "width_error_mm": 0.18421710875836972,
+      "caliper_length_mm": null,
+      "caliper_length_error_mm": null,
+      "caliper_width_mm": null,
+      "caliper_width_error_mm": null
+    },
+    {
+      "id": "20261116T013013026816_B020_vertical_1",
+      "label": "B020_vertical_1",
+      "role": "diagnostic",
+      "block": "B020",
+      "placement": "centre-vertical",
+      "frames": 5,
+      "warnings": "reference short-side comparison assumes recorded width face is visible; width outside axis reference span",
+      "length_mm": 20.112340873689522,
+      "length_frame_sd_mm": 0.1204619562209348,
+      "length_error_mm": 0.20234087368952203,
+      "width_mm": 11.092129031517729,
+      "width_frame_sd_mm": 0.09181797785669157,
+      "width_error_mm": 1.132129031517728,
+      "caliper_length_mm": null,
+      "caliper_length_error_mm": null,
+      "caliper_width_mm": null,
+      "caliper_width_error_mm": null
+    },
+    {
+      "id": "20261116T013635615030_B020_cross_vertical_1",
+      "label": "B020_cross_vertical_1",
+      "role": "calibration",
+      "block": "B020",
+      "placement": "image-centre-vertical",
+      "frames": 5,
+      "warnings": "reference short-side comparison assumes recorded width face is visible; width outside axis reference span",
+      "length_mm": 19.851102479345627,
+      "length_frame_sd_mm": 0.10365282399367848,
+      "length_error_mm": -0.058897520654372926,
+      "width_mm": 9.945906748700073,
+      "width_frame_sd_mm": 0.119312324873764,
+      "width_error_mm": -0.014093251299927445,
+      "caliper_length_mm": null,
+      "caliper_length_error_mm": null,
+      "caliper_width_mm": null,
+      "caliper_width_error_mm": null
+    },
+    {
+      "id": "20261116T015340474555_step_01_B030_H",
+      "label": "step_01_B030_H",
+      "role": "validation",
+      "block": "B030",
+      "placement": "crosshair-H",
+      "frames": 5,
+      "warnings": "reference short-side comparison assumes recorded width face is visible; length outside axis reference span; width outside axis reference span",
+      "length_mm": 29.690200123123383,
+      "length_frame_sd_mm": 0.0018477230554128463,
+      "length_error_mm": -0.12979987687661776,
+      "width_mm": 9.71669590094105,
+      "width_frame_sd_mm": 0.004131300598529459,
+      "width_error_mm": -0.31330409905894996,
+      "caliper_length_mm": null,
+      "caliper_length_error_mm": null,
+      "caliper_width_mm": null,
+      "caliper_width_error_mm": null
+    },
+    {
+      "id": "20261116T015403660576_step_02_B030_V",
+      "label": "step_02_B030_V",
+      "role": "validation",
+      "block": "B030",
+      "placement": "crosshair-V",
+      "frames": 5,
+      "warnings": "reference short-side comparison assumes recorded width face is visible; width outside axis reference span",
+      "length_mm": 29.84565117075244,
+      "length_frame_sd_mm": 0.007316044113123631,
+      "length_error_mm": 0.02565117075243961,
+      "width_mm": 9.565553057224786,
+      "width_frame_sd_mm": 0.007708107176245806,
+      "width_error_mm": -0.46444694277521315,
+      "caliper_length_mm": null,
+      "caliper_length_error_mm": null,
+      "caliper_width_mm": null,
+      "caliper_width_error_mm": null
+    },
+    {
+      "id": "20261116T015527092549_step_03_B050_H",
+      "label": "step_03_B050_H",
+      "role": "validation",
+      "block": "B050",
+      "placement": "crosshair-H",
+      "frames": 5,
+      "warnings": "reference short-side comparison assumes recorded width face is visible; length outside axis reference span; width outside axis reference span",
+      "length_mm": 49.67685341903286,
+      "length_frame_sd_mm": 0.006804745043371109,
+      "length_error_mm": -0.053146580967137425,
+      "width_mm": 9.664229280458713,
+      "width_frame_sd_mm": 0.009006797616090087,
+      "width_error_mm": -0.30577071954128776,
+      "caliper_length_mm": null,
+      "caliper_length_error_mm": null,
+      "caliper_width_mm": null,
+      "caliper_width_error_mm": null
+    },
+    {
+      "id": "20261116T015832647440_brick_001",
+      "label": "brick_001",
+      "role": "measurement",
+      "block": null,
+      "placement": "crosshair-free",
+      "frames": 5,
+      "warnings": "length outside axis reference span; width outside axis reference span",
+      "length_mm": 31.57928893760777,
+      "length_frame_sd_mm": 0.015393715614579057,
+      "length_error_mm": null,
+      "width_mm": 15.754010246080856,
+      "width_frame_sd_mm": 0.004138717546598741,
+      "width_error_mm": null,
+      "caliper_length_mm": 31.8,
+      "caliper_length_error_mm": -0.2207110623922297,
+      "caliper_width_mm": 15.79,
+      "caliper_width_error_mm": -0.03598975391914294
+    },
+    {
+      "id": "20261116T020254517843_brick_002",
+      "label": "brick_002",
+      "role": "measurement",
+      "block": null,
+      "placement": "crosshair-free",
+      "frames": 5,
+      "warnings": "length outside axis reference span; width outside axis reference span",
+      "length_mm": 31.578500979792857,
+      "length_frame_sd_mm": 0.013273168144190576,
+      "length_error_mm": null,
+      "width_mm": 15.753600441362755,
+      "width_frame_sd_mm": 0.008873978145004902,
+      "width_error_mm": null,
+      "caliper_length_mm": null,
+      "caliper_length_error_mm": null,
+      "caliper_width_mm": null,
+      "caliper_width_error_mm": null
+    }
+  ],
+  "validation_placements": 3,
+  "held_out_block_ids": [
+    "B030",
+    "B050"
+  ],
+  "uncertainty_status": "INCOMPLETE: no total expanded uncertainty is claimed",
+  "length_validation": {
+    "bias_mm": -0.05243176236377186,
+    "rmse_mm": 0.08232162467349721,
+    "max_abs_error_mm": 0.12979987687661776
+  },
+  "width_validation": {
+    "bias_mm": -0.3611739204584836,
+    "rmse_mm": 0.3684952075984975,
+    "max_abs_error_mm": 0.46444694277521315
+  }
+}

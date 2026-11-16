@@ -1,4 +1,5 @@
 """Synthetic checks only; these do not establish real-camera accuracy."""
+
 import tempfile
 import unittest
 from pathlib import Path
@@ -6,7 +7,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-from measure import span
+from legacy.measure import span
 
 
 class SilhouetteTests(unittest.TestCase):
@@ -18,7 +19,7 @@ class SilhouetteTests(unittest.TestCase):
             image = cv2.GaussianBlur(image, (7, 7), 1)
             cv2.imwrite(str(path), image)
             result = span(path, [20, 40, 460, 20])
-            self.assertLess(abs(result["pixels"]-300), 1)
+            self.assertLess(abs(result["pixels"] - 300), 1)
             with self.assertRaisesRegex(ValueError, "boundary"):
                 span(path, [110, 40, 350, 20])
 

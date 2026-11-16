@@ -1,0 +1,11 @@
+block_id,nominal_length_mm,length_mm,width_mm,height_mm,measurement_source
+B015,15,14.95,10.00,9.57,user supplied caliper reading
+B020,20,19.91,9.96,9.57,user supplied caliper reading
+B030,30,29.82,10.03,9.58,user supplied caliper reading
+B040,40,39.74,9.94,9.59,user supplied caliper reading
+B050,50,49.73,9.97,9.60,user supplied caliper reading
+B060,60,59.68,9.91,9.59,user supplied caliper reading
+B070,70,69.70,9.94,9.61,user supplied caliper reading
+B080,80,79.72,9.98,9.63,user supplied caliper reading
+B090,90,89.74,9.95,9.69,user supplied caliper reading
+B100,100,99.58,9.96,9.57,user supplied caliper reading

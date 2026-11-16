@@ -1,4 +1,16 @@
-# Nominal-reference MVP
+# Length and width MVP
+
+The MVP reports the longer rectangle side as length and the shorter as width in the console, overlay, and JSON. Both use the same length-derived scale, assuming equal image scale in both directions; validate that assumption. It does not correct distortion. The older horizontal-band measure.py workflow still measures length only.
+
+After changing camera height, capture a new reference and recalibrate. Old MVP models are rejected. For a caliper-measured reference, replace the example values below with your actual readings:
+
+```powershell
+.\.venv\Scripts\python mvp.py calibrate reference_100.png --length 99.94 --reference-measured --reference-width 9.92
+```
+
+The optional reference width produces a consistency-check error rather than forcing the width to match. Measured references alone do not validate accuracy. Keep raw caliper readings. Test other measured block sizes, repeated placements and horizontal/vertical orientations, comparing both dimensions against calipers. Multiple-reference fitting and spatial distortion correction are not yet implemented in this interactive MVP.
+
+## Earlier nominal-reference walkthrough
 
 This workflow can proceed while the caliper is unavailable. It uses nominal 100 mm as a temporary reference. Results demonstrate operation; accuracy, reference length, height mismatch and lens distortion remain unvalidated. Replace this calibration with measured references later.
 

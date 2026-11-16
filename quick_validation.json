@@ -1,0 +1,5 @@
+[
+  {"block": "B030", "direction": "H", "role": "validation"},
+  {"block": "B030", "direction": "V", "role": "validation"},
+  {"block": "B050", "direction": "H", "role": "validation"}
+]

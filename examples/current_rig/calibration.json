@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "setup_hash": "cc9490b60741b7ee096c437e7429f1e78a9da01ad6b4e8c48cb49a6b310aaff1",
+  "scales_mm_per_px": [
+    0.09724325406578584,
+    0.09779499002238305
+  ],
+  "radial_k": 1.054,
+  "radial_normalization": "image max dimension; centre fixed at image centre",
+  "fit_record_ids": [
+    "20261116T011159546709_B100_centre_1",
+    "20261116T011450535539_B080_centre_1",
+    "20261116T011915354365_B060_centre_1",
+    "20261116T012427389089_B040_vertical_1",
+    "20261116T013635615030_B020_cross_vertical_1"
+  ],
+  "fit_errors_mm": [
+    [
+      -0.13654602835072183,
+      -0.27818593940674674
+    ],
+    [
+      -0.16629521036368544,
+      0.08820581099377556
+    ],
+    [
+      0.20376273263479305,
+      0.07924088369082227
+    ],
+    [
+      0.11522132079574732,
+      -0.4200166312077922
+    ],
+    [
+      -0.058897520654372926,
+      -0.014093251299927445
+    ]
+  ],
+  "axis_reference_ranges_mm": [
+    [
+      59.68,
+      99.58
+    ],
+    [
+      19.91,
+      39.74
+    ]
+  ],
+  "reference_height_range_mm": [
+    9.57,
+    9.63
+  ],
+  "status": "PROVISIONAL until held-out validation and uncertainty budget are complete",
+  "model": "Diagonal metric with one radial correction fitted to long reference dimensions; no height compensation"
+}

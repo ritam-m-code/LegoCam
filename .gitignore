@@ -4,3 +4,6 @@ captures/
 *.png
 demo_calibration.json
 *_result.json
+*.jpg
+sessions/
+deliverables/

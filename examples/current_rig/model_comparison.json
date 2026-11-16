@@ -1,0 +1,23 @@
+{
+  "models": {
+    "calibration_baseline.json": {
+      "length_errors_mm": [
+        0.25037274589809044,
+        0.08068763309808347,
+        0.43435508664104816
+      ],
+      "length_rmse_mm": 0.29317875509347147
+    },
+    "calibration_radial.json": {
+      "length_errors_mm": [
+        -0.12979987687661776,
+        0.02565117075243961,
+        -0.053146580967137425
+      ],
+      "length_rmse_mm": 0.08232162467349721
+    }
+  },
+  "selected": "calibration_radial.json",
+  "selection_basis": "Smaller long-dimension errors on B030 and B050 checks; width interpretation unresolved",
+  "limitation": "These three checks have now been used for model selection; subsequent LEGO comparisons are needed for a fresh test."
+}
