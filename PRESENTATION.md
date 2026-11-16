@@ -42,6 +42,8 @@ Earlier readings are preserved when corrected. This command calculates camera mi
 
 ## Show results and the report
 
+Press **B** in the live window if the blue detection box includes the panel's dark border or cuts off a centred assembly. Draw a box entirely inside the illuminated panel with bright margins around the part, then press Enter. This saves `measurement_roi.json` for future runs. It changes detection bounds, not calibration coefficients; recheck references afterward. Every new capture records its detection region.
+
 ```powershell
 .\.venv\Scripts\python run.py report
 Invoke-Item .\deliverables\LegoCam_report.html
@@ -58,6 +60,7 @@ The HTML report opens in a browser and can be printed to PDF. It is rebuilt from
 | `records/` | One metadata record per placement; references raw frames |
 | `images/` | Raw frames and overlays captured in this session |
 | `comparisons/` | Caliper readings and their correction history |
+| `measurement_roi.json` | Optional blue detection area selected using B |
 | `results.csv` | Mean dimensions, frame scatter, errors and warnings |
 | `summary.json` | Machine-readable results and validation statistics |
 

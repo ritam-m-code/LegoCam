@@ -9,6 +9,7 @@ import cv2
 import numpy as np
 
 from camera import Camera
+from vision import select
 
 from legocam import (
     detect,
@@ -83,7 +84,7 @@ def check_reference_size(observation, step, state):
     return True, ""
 
 
-def save_batch(root, config, step, batch, camera, label):
+def save_batch(root, config, step, batch, camera, label, detection_roi=None):
     observations = [item[1] for item in batch]
     centres = np.array([o["centre_px"] for o in observations])
     sizes = np.array([[o["length_px"], o["width_px"]] for o in observations])
@@ -111,6 +112,7 @@ def save_batch(root, config, step, batch, camera, label):
         "control_readback": camera.readback,
         "settings_verified": False,
         "alignment_checked": True,
+        "detection_roi": detection_roi or config["roi"],
         "replacement": step.get("replacement"),
     }
     if step.get("block"):
@@ -159,7 +161,7 @@ def render(frame, observation, config, heading, instruction, status, accepted):
             (instruction, (210, 210, 210), 0.56),
             (status, (0, 255, 0) if accepted else (0, 200, 255), 0.56),
             (
-                "SPACE capture | Q or Esc save progress and quit | R retry failed capture",
+                "SPACE capture | B redraw blue area | Q quit | R retry",
                 (190, 190, 190),
                 0.5,
             ),
@@ -216,6 +218,21 @@ def main(argv=None):
         )
         save_json(root / "setup.json", config)
     config = read_json(root / "setup.json")
+    # Detection bounds can be changed without pretending the lens was recalibrated.
+    # Preserve the original setup/model and record the actual region per capture.
+    display_config = dict(config)
+    region_path = root / "measurement_roi.json"
+    if region_path.exists():
+        region = read_json(region_path)["roi"]
+        x, y, width, height = region
+        if (
+            min(x, y) < 0
+            or min(width, height) < 10
+            or x + width > config["width"]
+            or y + height > config["height"]
+        ):
+            raise ValueError("Measurement region is outside the camera image")
+        display_config["roi"] = region
     plan = read_json(args.plan) if args.plan else calibration_steps()
     if (
         not isinstance(plan, list)
@@ -252,6 +269,7 @@ def main(argv=None):
     cv2.namedWindow(window, cv2.WINDOW_AUTOSIZE)
     last_sequence = -1
     observation = None
+    detection_error = "No usable part outline"
     frame = None
     message = "Opening camera - please wait"
     batch = []
@@ -270,7 +288,8 @@ def main(argv=None):
             if new_frame:
                 last_sequence, stamp, frame = snapshot
                 try:
-                    observation = detect(frame, config["roi"])
+                    observation = detect(frame, display_config["roi"])
+                    detection_error = ""
                     accepted, placement_message = placement_check(
                         observation, step.get("direction") if not args.align_only else None
                     )
@@ -279,6 +298,7 @@ def main(argv=None):
                         if not size_ok:
                             accepted, placement_message = False, size_message
                 except ValueError as error:
+                    detection_error = str(error)
                     observation, accepted, placement_message = None, False, str(error)
                 if capture_after is not None and stamp >= capture_after:
                     if not accepted:
@@ -294,7 +314,9 @@ def main(argv=None):
                                 else f"step_{state['step']+1:02}_{step['block']}_{step['direction']}"
                             )
                             try:
-                                identifier = save_batch(root, config, step, batch, camera, label)
+                                identifier = save_batch(
+                                    root, config, step, batch, camera, label, display_config["roi"]
+                                )
                                 if args.measure:
                                     summarize(root)
                                     measurement_count += 1
@@ -331,7 +353,7 @@ def main(argv=None):
                         observation, step.get("direction") if not args.align_only else None
                     )
                     if observation
-                    else (False, "No usable part outline")
+                    else (False, detection_error or "No usable part outline")
                 )
                 if accepted and not args.align_only:
                     size_ok, size_message = check_reference_size(observation, step, state)
@@ -367,11 +389,34 @@ def main(argv=None):
                     or message.startswith(("Capture cancelled", "Object moved"))
                     else placement_message
                 )
-                canvas = render(frame, observation, config, heading, instruction, status, accepted)
+                canvas = render(
+                    frame, observation, display_config, heading, instruction, status, accepted
+                )
             cv2.imshow(window, canvas)
             key = cv2.waitKey(20) & 0xFF
             if key in (27, ord("q")) or cv2.getWindowProperty(window, cv2.WND_PROP_VISIBLE) < 1:
                 break
+            if key == ord("b") and frame is not None and capture_after is None:
+                try:
+                    region = select(frame)
+                    # Check the proposed crop before replacing the previous region.
+                    detect(frame, region)
+                    save_json(
+                        region_path,
+                        {
+                            "roi": region,
+                            "previous_roi": display_config["roi"],
+                            "reason": "Measurement region selected in live view",
+                            "verification_required": True,
+                        },
+                    )
+                    display_config["roi"] = region
+                    observation = None
+                    message = "Blue area updated. Recheck references after changing the region."
+                    notice_until = time.monotonic() + 4
+                except (ValueError, cv2.error) as error:
+                    message = "Region unchanged: " + str(error)
+                    notice_until = time.monotonic() + 5
             if key == ord("r"):
                 message = "Retry when centred"
                 capture_after, batch = None, []

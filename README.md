@@ -77,10 +77,6 @@ Raw images, session data and generated reports stay local and are ignored by Git
 
 The stock lens is not telecentric. Position, reference height, shadows, blur and surface shape affect the silhouette. The radial model is approximate and assumes the principal point is at the image centre. Recalibrate after changing camera geometry, focus, resolution or lighting. The printed reference artifacts have caliper measurements, not certified gauge-block traceability. Identify which reference face is down before interpreting short-side errors. Validate actual LEGO length and width separately from model selection.
 
-## Software checks
+## Development
 
-```powershell
-.\.venv\Scripts\python -m unittest -v
-```
-
-Tests cover detection, rotation, placement gates, scale recovery and saved-session results. Synthetic tests do not establish camera accuracy. Optional formatting tools are in `requirements-dev.txt`.
+Optional formatting tools are in `requirements-dev.txt`. The development checks are kept locally and are not needed for the submitted measurement pipeline. Software checks do not establish camera accuracy; use reference and actual-part comparisons for that.

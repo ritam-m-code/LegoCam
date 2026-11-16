@@ -11,7 +11,16 @@ import numpy as np
 
 import calibrate
 from camera import Camera
-from legocam import dimensions, fit, read_json, records, save_json, setup_hash, summarize
+from legocam import (
+    dimensions,
+    fit,
+    read_json,
+    records,
+    save_json,
+    setup_hash,
+    summarize,
+    validation_checks,
+)
 from vision import select
 
 PROJECT = Path(__file__).resolve().parent
@@ -57,7 +66,7 @@ def setup_session(root, args):
 
 def compare_models(root):
     """Compare long-dimension check errors; retain both models for inspection."""
-    check_records = [r for r in records(root) if r["role"] == "validation"]
+    check_records, check_scope = validation_checks(root, records(root))
     if len({r["block"] for r in check_records}) < 2:
         raise ValueError("Capture at least two different held-out blocks before comparing models")
     comparisons = {}
@@ -92,6 +101,7 @@ def compare_models(root):
         {
             "models": comparisons,
             "selected": selected,
+            "check_scope": check_scope,
             "selection_basis": "Smallest long-dimension check RMSE; short reference sides are not fitted",
             "limitation": "Checks used for model selection are no longer an untouched final test. Check actual bricks next.",
         },

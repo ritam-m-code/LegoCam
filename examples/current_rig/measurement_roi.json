@@ -1,0 +1,16 @@
+{
+  "roi": [
+    1308,
+    1254,
+    1202,
+    557
+  ],
+  "previous_roi": [
+    1384,
+    1137,
+    1039,
+    603
+  ],
+  "reason": "Measurement region selected in live view",
+  "verification_required": true
+}

@@ -36,7 +36,7 @@ def select(image):
     try:
         roi = cv2.selectROI("Select part - Enter confirms", preview, fromCenter=False)
     finally:
-        cv2.destroyAllWindows()
+        cv2.destroyWindow("Select part - Enter confirms")
     if not roi[2] or not roi[3]:
         raise ValueError("Selection cancelled")
     sx, sy = image.shape[1] / preview.shape[1], image.shape[0] / preview.shape[0]

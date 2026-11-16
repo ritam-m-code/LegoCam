@@ -73,6 +73,14 @@ def build(session, output):
         else None
     )
     rows = summary["records"] if summary else []
+    check_ids = (
+        summary.get(
+            "validation_record_ids", [row["id"] for row in rows if row["role"] == "validation"]
+        )
+        if summary
+        else []
+    )
+    plot_rows = [row for row in rows if row["role"] == "calibration" or row["id"] in check_ids]
     records = [
         json.loads(path.read_text()) for path in sorted((session / "records").glob("*.json"))
     ]
@@ -128,6 +136,9 @@ def build(session, output):
             f"<p>Selected model: {escape(model['model'])}. Radial coefficient k = {model.get('radial_k', 0):.4f}.</p>"
         )
         body.append(
+            f"<p>Current check statistics and deviation plots use {escape(summary.get('validation_scope', 'the recorded validation captures'))}. Earlier and incomplete captures remain in the full data table for audit.</p>"
+        )
+        body.append(
             table(
                 ["Calibration quantity", "Value"],
                 [
@@ -170,7 +181,7 @@ def build(session, output):
             )
         )
         for name in ("length", "width"):
-            body += [f"<h3>{name.title()} validation</h3>", graph(rows, name)]
+            body += [f"<h3>{name.title()} validation</h3>", graph(plot_rows, name)]
             stats = summary[name + "_validation"]
             if stats:
                 body.append(

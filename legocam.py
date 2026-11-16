@@ -83,6 +83,20 @@ def records(root):
     return [read_json(path) for path in sorted((root / "records").glob("*.json"))]
 
 
+def validation_checks(root, rows):
+    """Use the latest completed check pass; keep unfinished passes as raw evidence."""
+    checks = [row for row in rows if row["role"] == "validation"]
+    for path in sorted(root.glob("checks_*.json"), reverse=True):
+        progress = read_json(path)
+        plan = progress.get("plan", [])
+        completed = progress.get("completed", [])
+        if plan and progress.get("step") == len(plan) and len(completed) == len(plan):
+            selected = [row for row in checks if row["id"] in completed]
+            if len(selected) == len(completed):
+                return selected, "latest completed pass: " + path.name
+    return checks, "all recorded validation captures"
+
+
 def capture(root, args):
     config = read_json(root / "setup.json")
     if not re.fullmatch(r"[A-Za-z0-9_-]+", args.label):
@@ -276,6 +290,8 @@ def summarize(root, verbose=True):
             if "reference" in record
             else []
         )
+        if record.get("detection_roi", config["roi"]) != config["roi"]:
+            warnings.append("detection region changed; verify against references")
         for edge_index, vector in enumerate(record["observations"][0]["vectors"]):
             axis = int(np.argmax(np.abs(vector)))
             bounds = model["axis_reference_ranges_mm"][axis]
@@ -308,13 +324,15 @@ def summarize(root, verbose=True):
         writer = csv.DictWriter(stream, fieldnames=list(output[0]))
         writer.writeheader()
         writer.writerows(output)
-    checks = [r for r in output if r["role"] == "validation"]
+    checks, validation_scope = validation_checks(root, output)
     fit_blocks = {r["block"] for r in output if r["role"] == "calibration"}
     independent = [r for r in checks if r["block"] not in fit_blocks]
     summary = {
         "calibration": model,
         "records": output,
         "validation_placements": len(checks),
+        "validation_scope": validation_scope,
+        "validation_record_ids": [row["id"] for row in checks],
         "held_out_block_ids": sorted({r["block"] for r in independent}),
         "uncertainty_status": "INCOMPLETE: no total expanded uncertainty is claimed",
     }

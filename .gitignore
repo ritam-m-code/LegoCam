@@ -7,3 +7,4 @@ demo_calibration.json
 *.jpg
 sessions/
 deliverables/
+local_checks/
