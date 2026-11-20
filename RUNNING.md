@@ -2,10 +2,10 @@
 
 Practical notes for the rig. For what the code does and why, see [README.md](README.md).
 
-All commands run from inside the `minimal` folder:
+All commands run from the repository root:
 
 ```powershell
-cd c:\Users\ritam\OneDrive\Desktop\projects\LegoCam\minimal
+cd LegoCam
 ```
 
 ---
@@ -159,11 +159,10 @@ python measure.py calibrate
 ## Where things live
 
 ```
-minimal/
-  session/
-    setup.json        camera settings and the measurement box
-    scale.json        mm per pixel, and how far each block landed from its known size
-    setup_image.png   the frame you drew the box on
+session/
+  setup.json        camera settings and the measurement box
+  scale.json        mm per pixel, and how far each block landed from its known size
+  setup_image.png   the frame you drew the box on
 ```
 
 Measurements are not saved. They print to the terminal and go when you close it. If you

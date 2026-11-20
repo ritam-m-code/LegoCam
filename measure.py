@@ -1,4 +1,4 @@
-"""LegoCam, minimal version.
+"""LegoCam.
 
 Three commands, in the order you run them:
 
@@ -6,7 +6,7 @@ Three commands, in the order you run them:
     python measure.py calibrate    show it six gauge blocks, get mm per pixel
     python measure.py measure      put a brick in, read its size on screen
 
-Everything is kept in minimal/session/. Nothing else is written.
+Everything is kept in session/. Nothing else is written.
 """
 
 import argparse
